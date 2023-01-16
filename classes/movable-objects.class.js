@@ -36,7 +36,7 @@ class MovableObject extends DrawableObject {
 
     isHurt() {
         let timePassed = (new Date().getTime() - this.lastHit); //difference in milliseconds 
-        return timePassed < 100;
+        return timePassed < 200;
     }
 
     isDead() {
@@ -62,9 +62,15 @@ class MovableObject extends DrawableObject {
         this.speedY = 30;
     }
 
-    //checking if objects are colliding with each other
+    //checking if objects are colliding with Character
     isColliding(obj) {
         return (this.x + this.width - 20) >= obj.x && (this.x + 20) <= (obj.x + obj.width) &&
-            (this.y + this.height - 10) >= obj.y && (this.y + 180) <= (obj.y + obj.height);
+            (this.y + this.height - 10) >= obj.y && (this.y + 160) <= (obj.y + obj.height);
+    }
+
+    //checking if objects are colliding with Endboss
+    isCollidingEndboss(obj) {
+        return (this.x + this.width - 20) >= obj.x && (this.x + 20) <= (obj.x + obj.width) &&
+            (this.y + this.height - 20) >= obj.y && (this.y + 20) <= (obj.y + obj.height);
     }
 }

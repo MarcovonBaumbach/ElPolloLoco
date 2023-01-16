@@ -11,19 +11,19 @@ function init() {
 }
 
 window.addEventListener('keydown', (event) => {
-    if (event.code == 'ArrowLeft') {
+    if (event.code == 'ArrowLeft' && !world.character.isDead()) {
         keyboard.LEFT = true;
     }
-    if (event.code == 'ArrowRight') {
+    if (event.code == 'ArrowRight' && !world.character.isDead()) {
         keyboard.RIGHT = true;
     }
-    if (event.code == 'ArrowUp') {
+    if (event.code == 'ArrowUp' && !world.character.isDead()) {
         keyboard.UP = true;
     }
-    if (event.code == 'ArrowDown') {
+    if (event.code == 'ArrowDown' && !world.character.isDead()) {
         keyboard.DOWN = true;
     }
-    if (event.code == 'Space') {
+    if (event.code == 'Space' && !world.character.isDead()) {
         keyboard.SPACE = true;
     }
     console.log(event);

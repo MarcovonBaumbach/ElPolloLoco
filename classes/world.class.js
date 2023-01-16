@@ -4,6 +4,7 @@
 class World {
     clouds = level1.clouds;
     character = new Character();
+    endboss = new Endboss();
     enemies = level1.enemies;
     coins = level1.coins;
     bottles = level1.bottles;
@@ -46,6 +47,7 @@ class World {
         this.addObjectsToMap(this.coins);
         this.addObjectsToMap(this.bottles); 
         this.addToMap(this.character);
+        this.addToMap(this.endboss);
         this.addObjectsToMap(this.throwableObjects);    
         this.addObjectsToMap(this.enemies);
         this.ctx.translate(-this.camera_x, 0);
@@ -105,6 +107,17 @@ class World {
               this.character.hit();
               this.statusBar.setPercentage(this.character.energy);
               console.log('warning collision', this.character.energy);
+            }
+        });
+        if(this.character.isColliding(this.endboss) && !this.endboss.isDead()) {
+            this.character.hit();
+            this.statusBar.setPercentage(this.character.energy);
+            console.log('warning collision', this.character.energy);
+        }
+        this.throwableObjects.forEach((throwableObject) => {
+            if(this.endboss.isCollidingEndboss(throwableObject)) {
+              this.endboss.hit();
+              console.log('endboss hit', this.endboss.energy);
             }
         });
     }
