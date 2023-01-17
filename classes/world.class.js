@@ -85,6 +85,11 @@ class World {
 
     run() {
         setInterval(() => {
+            if(this.character.x > (this.endboss.x - 80)) {
+                this.character.x = this.endboss.x - 80;
+            }
+        }, 30);
+        setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
             this.collectObject(this.bottles, this.bottleBar);
@@ -106,18 +111,15 @@ class World {
             if(this.character.isColliding(enemy)) {
               this.character.hit();
               this.statusBar.setPercentage(this.character.energy);
-              console.log('warning collision', this.character.energy);
             }
         });
         if(this.character.isColliding(this.endboss) && !this.endboss.isDead()) {
             this.character.hit();
             this.statusBar.setPercentage(this.character.energy);
-            console.log('warning collision', this.character.energy);
         }
         this.throwableObjects.forEach((throwableObject) => {
             if(this.endboss.isCollidingEndboss(throwableObject)) {
               this.endboss.hit();
-              console.log('endboss hit', this.endboss.energy);
             }
         });
     }
@@ -129,7 +131,6 @@ class World {
               object.splice(i, 1);
               bar.amount++;
               bar.setAmount();
-              console.log('warning collision', bar.amount);
             }
         }
     }
