@@ -11,25 +11,24 @@ function init() {
 }
 
 window.addEventListener('keydown', (event) => {
-    if (event.code == 'ArrowLeft' && !world.character.isDead()) {
+    if (event.code == 'ArrowLeft' && !world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
         keyboard.LEFT = true;
     }
-    if (event.code == 'ArrowRight' && !world.character.isDead()) {
+    if (event.code == 'ArrowRight' && !world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
         keyboard.RIGHT = true;
     }
-    if (event.code == 'ArrowUp' && !world.character.isDead()) {
+    if (event.code == 'ArrowUp' && !world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
         keyboard.UP = true;
     }
-    if (event.code == 'ArrowDown' && !world.character.isDead()) {
+    if (event.code == 'ArrowDown' && !world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
         keyboard.DOWN = true;
     }
-    if (event.code == 'Space' && !world.character.isDead()) {
+    if (event.code == 'Space' && !world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
         keyboard.SPACE = true;
     }
     if (event.code == 'Enter') {
         keyboard.ENTER = true;
     }
-    console.log(event);
 });
 
 window.addEventListener('keyup', (event) => {
@@ -48,5 +47,4 @@ window.addEventListener('keyup', (event) => {
     if (event.code == 'Space') {
         keyboard.SPACE = false;
     }
-    console.log(event);
 });
