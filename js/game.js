@@ -26,6 +26,9 @@ window.addEventListener('keydown', (event) => {
     if (event.code == 'Space' && !world.character.isDead()) {
         keyboard.SPACE = true;
     }
+    if (event.code == 'Enter') {
+        keyboard.ENTER = true;
+    }
     console.log(event);
 });
 

@@ -18,6 +18,7 @@ class World {
     bottleBar = new BottleBar();
     coinBar = new CoinBar();
     throwableObjects = [];
+    startScreen = new StartScreen();
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); //allows you to "draw" objects on the canvas
@@ -40,7 +41,9 @@ class World {
      */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); //Clearing last Frame, before drawing a new one
-
+        if(this.startScreen.startScreenActive) {
+        this.addToMap(this.startScreen);
+        } else {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.backgroundObjects);   
         this.addObjectsToMap(this.clouds);  
@@ -55,6 +58,7 @@ class World {
         this.addToMap(this.statusBar);  
         this.addToMap(this.bottleBar);  
         this.addToMap(this.coinBar);  
+        }
 
         let self = this;                           //requestAnimationFrame doesn't know *this*, so you need to store it in a variable    
         requestAnimationFrame(function() {         //draw() gets called over and over, as often as the GPU allows
@@ -94,7 +98,21 @@ class World {
             this.checkThrowObjects();
             this.collectObject(this.bottles, this.bottleBar);
             this.collectObject(this.coins, this.coinBar);
+            this.checkEnterPressed();
         }, 200);
+    }
+
+    startGame() {
+        this.startScreen.startScreenActive = false;
+        this.enemies.forEach((enemy => {
+            enemy.speed = 0.5 + Math.random();
+        }))
+    }
+
+    checkEnterPressed() {
+        if(this.keyboard.ENTER) {
+            this.startGame();
+        }
     }
 
     checkThrowObjects() {
