@@ -22,6 +22,7 @@ class World {
     throwableObjects = [];
     startScreen = new StartScreen();
     endScreen = new EndScreen();
+    gameMusic = new Audio('./audio/music.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); //allows you to "draw" objects on the canvas
@@ -113,6 +114,7 @@ class World {
     checkGameWon() {
         if(this.endScreen.deleteEnemies) {
             this.enemies = [];
+            this.gameMusic.pause();
         }
     }
 
@@ -121,6 +123,7 @@ class World {
         this.enemies.forEach((enemy => {
             enemy.speed = 0.5 + Math.random();
         }))
+        this.gameMusic.play();
     }
 
     checkEnterPressed() {

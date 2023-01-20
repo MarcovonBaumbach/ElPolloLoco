@@ -16,21 +16,30 @@ class EndScreen extends MovableObject {
     checkGameOver() {
         setInterval(() => {
             if (this.world.character.isDead()) {
-                this.img = new Image();
-                this.img.src = this.IMAGE_LOST;
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 4000);
+                this.gameLost();
             }
             if (this.world.endboss.isDead()) {
-                this.img = new Image();
-                this.img.src = this.IMAGE_END;
-                this.deleteEnemies = true;
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 4000);
+                this.gameWon();
             }
         }, 200);
+    }
+
+    gameWon() {
+        this.img = new Image();
+        this.img.src = this.IMAGE_END;
+        this.deleteEnemies = true;
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 4000);
+    }
+
+    gameLost() {
+        this.img = new Image();
+        this.img.src = this.IMAGE_LOST;
+        this.world.gameMusic.pause();
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 4000);
     }
 }
 
