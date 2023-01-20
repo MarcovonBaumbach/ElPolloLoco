@@ -7,7 +7,9 @@ class World {
     endboss = new Endboss();
     enemies = level1.enemies;
     coins = level1.coins;
+    coinSound = new Audio('./audio/coin.mp3');
     bottles = level1.bottles;
+    bottleSound = new Audio('./audio/bottle.mp3');
     backgroundObjects = level1.backgroundObjects;
     world_end_x = (this.backgroundObjects.length - 4) / 4 * 719;
     ctx;
@@ -158,6 +160,12 @@ class World {
     collectObject(object, bar) {
         for (let i = 0; i < object.length; i++) {
             if (this.character.isColliding(object[i]) && bar.amount < 5) {
+                if(object == this.bottles){
+                    this.bottleSound.play();
+                }
+                if(object == this.coins){
+                    this.coinSound.play();
+                }
                 object.splice(i, 1);
                 bar.amount++;
                 bar.setAmount();

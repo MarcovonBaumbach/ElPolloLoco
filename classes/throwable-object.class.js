@@ -16,6 +16,7 @@ class ThrowableObject extends MovableObject {
     width = 100;
     height = 100;
     bottleRotation = true;
+    splashSound = new Audio('./audio/splash.mp3');
 
     constructor(x, y) {
         super().loadImage('./img/6_salsa_bottle/salsa_bottle.png');
@@ -39,6 +40,10 @@ class ThrowableObject extends MovableObject {
                 this.playAnimation(this.IMAGES);
             } else {
                 this.playAnimation(this.BOTTLE_SPLASH);
+                if(this.splashSound) {
+                    this.splashSound.play();
+                }
+                this.splashSound = false;
             }
         }, 40);
     }
