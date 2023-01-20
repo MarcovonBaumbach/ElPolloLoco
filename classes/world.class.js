@@ -150,6 +150,7 @@ class World {
         this.throwableObjects.forEach((throwableObject) => {
             if (this.endboss.isCollidingEndboss(throwableObject)) {
                 this.endboss.hit();
+                throwableObject.bottleRotation = false;
             }
         });
     }

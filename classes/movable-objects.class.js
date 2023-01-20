@@ -71,7 +71,7 @@ class MovableObject extends DrawableObject {
 
     //checking if objects are colliding with Endboss
     isCollidingEndboss(obj) {
-        return (this.x + this.width - 20) >= obj.x && (this.x + 20) <= (obj.x + obj.width) &&
+        return (this.x + this.width - 20) >= obj.x && (this.x + 40) <= (obj.x + obj.width) &&
             (this.y + this.height - 20) >= obj.y && (this.y + 20) <= (obj.y + obj.height);
     }
 }
