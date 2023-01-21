@@ -5,7 +5,14 @@ class World {
     clouds = level1.clouds;
     character = new Character();
     endboss = new Endboss();
-    enemies = level1.enemies;
+    enemies =    [
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken()
+    ];
     coins = level1.coins;
     coinSound = new Audio('./audio/coin.mp3');
     bottles = level1.bottles;
@@ -39,6 +46,9 @@ class World {
     setWorld() {
         this.character.world = this;
         this.endScreen.world = this;
+        this.enemies.forEach((enemy) => {
+            enemy.world = this;
+        });
     }
 
     /**
@@ -100,6 +110,7 @@ class World {
             if (this.character.x > (this.endboss.x - 80)) {
                 this.character.x = this.endboss.x - 80;
             }
+            checkChickenKilled();
         }, 30);
         setInterval(() => {
             this.checkCollisions();
@@ -143,21 +154,41 @@ class World {
 
     checkCollisions() {
         this.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            if (this.character.isColliding(enemy) && !this.character.isAboveGround()) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
         });
-        if (this.character.isColliding(this.endboss) && !this.endboss.isDead()) {
-            this.character.hit();
-            this.statusBar.setPercentage(this.character.energy);
-        }
         this.throwableObjects.forEach((throwableObject) => {
             if (this.endboss.isCollidingEndboss(throwableObject)) {
                 this.endboss.hit();
                 throwableObject.bottleRotation = false;
             }
         });
+        this.characterCollidingWithEndboss();
+    }
+
+    checkChickenKilled() {
+        this.enemies.forEach((enemy) => {
+            if (this.character.isColliding(this) && this.character.isAboveGround() && this.character.speedY < 0) {
+                enemy.dead = true;
+                this.removeDeadChicken(enemy);
+            }
+        });
+    }
+
+    removeDeadChicken(enemy) {
+        setTimeout(() => {
+            let index = this.enemies.indexOf(enemy);
+            this.enemies.splice(index, 1);
+        }, 1000);
+    }
+
+    characterCollidingWithEndboss() {
+        if (this.character.isColliding(this.endboss) && !this.endboss.isDead()) {
+            this.character.hit();
+            this.statusBar.setPercentage(this.character.energy);
+        }
     }
 
     collectObject(object, bar) {
