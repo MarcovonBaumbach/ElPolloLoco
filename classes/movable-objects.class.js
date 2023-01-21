@@ -8,6 +8,7 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     timePassed = 0;
+    hurtSound = new Audio('./audio/hurt.mp3');
 
     applyGravity() {
         setInterval(() => {
@@ -28,6 +29,9 @@ class MovableObject extends DrawableObject {
 
     hit() {
         this.energy -= 2;
+        if(this.hurtSound != '') {
+            this.hurtSound.play();
+        }
         if (this.energy < 0) {
             this.energy = 0;
         } else {
@@ -61,6 +65,15 @@ class MovableObject extends DrawableObject {
 
     jump() {
         this.speedY = 30;
+    }
+        
+    randomImage(image) {
+        let randomNumber = Math.random();
+        if(randomNumber > 0.5) {
+            return image[0];
+        } else {
+            return image[1];
+        }
     }
 
     //checking if objects are colliding with Character

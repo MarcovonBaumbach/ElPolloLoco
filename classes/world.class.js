@@ -5,7 +5,7 @@ class World {
     clouds = level1.clouds;
     character = new Character();
     endboss = new Endboss();
-    enemies =    [
+    enemies = [
         new Chicken(),
         new Chicken(),
         new Chicken(),
@@ -30,6 +30,7 @@ class World {
     startScreen = new StartScreen();
     endScreen = new EndScreen();
     gameMusic = new Audio('./audio/music.mp3');
+    gameOverScore = new Audio('./audio/gameOver.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); //allows you to "draw" objects on the canvas
@@ -110,7 +111,7 @@ class World {
             if (this.character.x > (this.endboss.x - 80)) {
                 this.character.x = this.endboss.x - 80;
             }
-            checkChickenKilled();
+            this.checkChickenKilled();
         }, 30);
         setInterval(() => {
             this.checkCollisions();
@@ -126,6 +127,7 @@ class World {
         if(this.endScreen.deleteEnemies) {
             this.enemies = [];
             this.gameMusic.pause();
+            this.gameOverScore.play();
         }
     }
 
@@ -170,18 +172,10 @@ class World {
 
     checkChickenKilled() {
         this.enemies.forEach((enemy) => {
-            if (this.character.isColliding(this) && this.character.isAboveGround() && this.character.speedY < 0) {
+            if (this.character.isColliding(this) && this.character.isAboveGround()) {
                 enemy.dead = true;
-                this.removeDeadChicken(enemy);
             }
         });
-    }
-
-    removeDeadChicken(enemy) {
-        setTimeout(() => {
-            let index = this.enemies.indexOf(enemy);
-            this.enemies.splice(index, 1);
-        }, 1000);
     }
 
     characterCollidingWithEndboss() {

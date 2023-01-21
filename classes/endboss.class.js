@@ -39,6 +39,7 @@ class Endboss extends MovableObject {
     energy = 27;
     attackTime = 0;
     speed = 5;
+    hurtSound = new Audio('./audio/chickenHit.mp3');
 
     constructor() {
         super().loadImage('./img/4_enemie_boss_chicken/2_alert/G5.png');
@@ -57,6 +58,7 @@ class Endboss extends MovableObject {
             if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
                 this.endbossAttacks();
+                this.hurtSound.play();
             }
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);

@@ -7,6 +7,7 @@ class EndScreen extends MovableObject {
     height = 480;
     x = 0;
     y = 0;
+    gameLostScore = new Audio('./audio/gameLost.mp3');
 
     constructor() {
         super();
@@ -37,6 +38,8 @@ class EndScreen extends MovableObject {
         this.img = new Image();
         this.img.src = this.IMAGE_LOST;
         this.world.gameMusic.pause();
+        this.world.character.hurtSound = '';
+        this.gameLostScore.play();
         setTimeout(() => {
             window.location.href = 'index.html';
         }, 4000);

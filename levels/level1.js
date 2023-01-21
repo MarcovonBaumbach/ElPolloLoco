@@ -19,6 +19,12 @@ const level1 = new Level(
         new Bottle()
     ],
     [
+        new Cloud(),
+        new Cloud(),
+        new Cloud(),
+        new Cloud(),
+        new Cloud(),
+        new Cloud(),
         new Cloud()
     ],
     newBackgroundObject,

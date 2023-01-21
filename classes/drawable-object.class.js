@@ -25,7 +25,6 @@ class DrawableObject {
         });
     }
 
-    
     //draw rectangle around the object, for collision detection
     drawObjectBorder(ctx) {
         if (this instanceof Character || this instanceof Chicken || this instanceof Bottle || this instanceof Coin) {
