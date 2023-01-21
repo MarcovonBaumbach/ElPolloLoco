@@ -156,7 +156,7 @@ class World {
 
     checkCollisions() {
         this.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && !this.character.isAboveGround()) {
+            if (this.character.isColliding(enemy) && !this.character.isAboveGround() && !enemy.dead) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
@@ -172,7 +172,7 @@ class World {
 
     checkChickenKilled() {
         this.enemies.forEach((enemy) => {
-            if (this.character.isColliding(this) && this.character.isAboveGround()) {
+            if (this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
                 enemy.dead = true;
             }
         });
