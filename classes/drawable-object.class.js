@@ -1,3 +1,6 @@
+/**
+ * Class for all drawable objects
+ */
 class DrawableObject {
     x = 120;
     y = 140;
@@ -8,6 +11,9 @@ class DrawableObject {
     currentImage = 0;
     amount = 0;
 
+    /**
+     * Load image from @param {string} path 
+     */
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
@@ -25,7 +31,10 @@ class DrawableObject {
         });
     }
 
-    //draw rectangle around the object, for collision detection
+    /**
+     * Draw rectangle around the object, for collision detection
+     * @param {*} ctx 
+     */
     drawObjectBorder(ctx) {
         if (this instanceof Character || this instanceof Chicken || this instanceof Bottle || this instanceof Coin) {
             ctx.beginPath();
@@ -36,6 +45,9 @@ class DrawableObject {
         }
     }
 
+    /**
+     * Increases or decreases the status bar amount for collected bottles and coins
+     */
     setAmount() {
         let path = this.IMAGES[this.amount];
         this.img = this.imageCache[path];

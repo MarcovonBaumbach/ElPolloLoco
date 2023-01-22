@@ -1,5 +1,5 @@
 /**
- * general class for background objects
+ * General class for background objects
  */
 class BackgroundObject extends MovableObject {
     width = 720;

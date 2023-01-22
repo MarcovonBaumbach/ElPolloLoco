@@ -1,3 +1,6 @@
+/**
+ * Class for properties of bottles
+ */
 class Bottle extends MovableObject {
     width = 100;
     height = 100;

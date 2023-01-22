@@ -1,3 +1,6 @@
+/**
+ * Status bar that shows you how many coins have been collected
+ */
 class CoinBar extends DrawableObject {
     IMAGES = [
         'img/7_statusbars/1_statusbar/1_statusbar_coin/orange/0.png',

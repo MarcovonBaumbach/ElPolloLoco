@@ -1,5 +1,5 @@
 /**
- * class for the playable character
+ * Class for the playable character
  */
 class Character extends MovableObject {
   speed = 10;
@@ -78,12 +78,18 @@ class Character extends MovableObject {
     this.applyGravity();
   }
 
+  /**
+   * Runs all animations of the character
+   */
   animateCharacter() {
     this.characterMovingAnimation();
     this.characterIdleAnimation();
     this.runAnimations();
   }
 
+  /**
+   * Moves the character when keys are pressed
+   */
   characterMovingAnimation() {
     setInterval(() => {
       this.walkingSound.pause();
@@ -105,6 +111,9 @@ class Character extends MovableObject {
     }, 30);
   }
 
+  /**
+   * Animation when character isn't moving
+   */
   characterIdleAnimation() {
     setInterval(() => {
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.SPACE) {
@@ -120,6 +129,9 @@ class Character extends MovableObject {
     }, 150);
   }
 
+  /**
+   * Animating the movements of the character 
+   */
   runAnimations() {
     setInterval(() => {
       if (this.isDead()) {
