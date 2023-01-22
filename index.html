@@ -28,10 +28,29 @@
     <script src="./js/game.js"></script>
 </head>
 <body onload="init()">
-    <h1>El Pollo Loco</h1>
-    
-    <canvas onmousedown="world.startGame()" class="canvas" id="canvas" width="720" height="480">
+    <h1>EL POLLO LOCO</h1>
 
-    </canvas>
+    <span class="description">Jump on little chicken to eliminate them! <br> Collect bottles and coins! <br>
+        Throw bottles on endboss until he's dead to win, but be careful he comes after you!
+    </span>
+
+    <canvas onmousedown="world.startGame()" class="canvas" id="canvas" width="720" height="480"></canvas>
+
+    <div class="commands">
+        <div class="command-row">
+            <img src="./img/10_keys/enter.png">
+            <span>START GAME</span>   
+            <img class="space" src="./img/10_keys/space.png">
+            <span>THROW BOTTLE</span>
+        </div>
+        <div class="command-row">
+            <img src="./img/10_keys/left.png">
+            <span>MOVE LEFT</span>
+            <img src="./img/10_keys/up.png">
+            <span>JUMP</span>
+            <img src="./img/10_keys/right.png">
+            <span>MOVE RIGHT</span>
+        </div>     
+    </div>
 </body>
 </html>

@@ -2,9 +2,43 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0;
+    background-color: #efa751;
+    background-size: cover;
+    font-family: fantasy;
+}
+
+h1 {
+    font-size: 50px;
 }
 
 .canvas {
     background-color: black;
     cursor: pointer;
+}
+
+.commands {
+    width: 720px;
+}
+
+.command-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.description {
+    margin-bottom: 30px;
+    width: 720px;
+}
+
+span {
+    font-size: 20px;
+}
+
+.space {
+    height: 52px;
+    width: auto;
 }

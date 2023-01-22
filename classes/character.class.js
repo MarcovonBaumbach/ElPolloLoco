@@ -110,11 +110,11 @@ class Character extends MovableObject {
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.SPACE) {
         this.idleTimer = 0;
       }
-      if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && this.idleTimer < 5000 && !this.isDead()) {
+      if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && this.idleTimer < 7000 && !this.isDead()) {
           this.playAnimation(this.IMAGES_IDLE);
           this.idleTimer += 150;
       } 
-      if (this.idleTimer >= 5000 && !this.isDead()) {
+      if (this.idleTimer >= 7000 && !this.isDead()) {
         this.playAnimation(this.IMAGES_LONG_IDLE);
       }
     }, 150);

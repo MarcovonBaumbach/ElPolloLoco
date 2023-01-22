@@ -36,7 +36,7 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/1_walk/G4.png'
     ];
     width = 250;
-    energy = 27;
+    energy = 22;
     attackTime = 0;
     speed = 5;
     hurtSound = new Audio('./audio/chickenHit.mp3');

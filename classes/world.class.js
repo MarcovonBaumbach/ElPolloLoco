@@ -5,14 +5,7 @@ class World {
     clouds = level1.clouds;
     character = new Character();
     endboss = new Endboss();
-    enemies = [
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken()
-    ];
+    enemies = level1.enemies;
     coins = level1.coins;
     coinSound = new Audio('./audio/coin.mp3');
     bottles = level1.bottles;
@@ -30,7 +23,6 @@ class World {
     startScreen = new StartScreen();
     endScreen = new EndScreen();
     gameMusic = new Audio('./audio/music.mp3');
-    gameOverScore = new Audio('./audio/gameOver.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); //allows you to "draw" objects on the canvas
@@ -119,15 +111,17 @@ class World {
             this.collectObject(this.bottles, this.bottleBar);
             this.collectObject(this.coins, this.coinBar);
             this.checkEnterPressed();
-            this.checkGameWon();
+            this.checkGameOver();
         }, 200);
     }
 
-    checkGameWon() {
+    checkGameOver() {
         if(this.endScreen.deleteEnemies) {
             this.enemies = [];
             this.gameMusic.pause();
-            this.gameOverScore.play();
+        }
+        if (this.endScreen.lost) {
+            this.gameMusic.pause();
         }
     }
 
