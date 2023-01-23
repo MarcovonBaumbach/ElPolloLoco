@@ -1,3 +1,6 @@
+/**
+ * class for objects in the level
+ */
 class Level {
     enemies;
     clouds;

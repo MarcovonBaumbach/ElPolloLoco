@@ -1,3 +1,6 @@
+/**
+ * Class for the endboss
+ */
 class Endboss extends MovableObject {
     IMAGES_ALERT = [
        'img/4_enemie_boss_chicken/2_alert/G5.png',
@@ -52,6 +55,9 @@ class Endboss extends MovableObject {
         this.animateEndboss();
     }
 
+    /**
+     * Animating movements for the endboss
+     */
     animateEndboss() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_ALERT);
@@ -67,6 +73,9 @@ class Endboss extends MovableObject {
         }, 200);
     }
 
+    /**
+     * Animating the attack of the endboss, when he got hit by a bottle
+     */
     endbossAttacks() {
         this.attackTime = 0;
         setTimeout(() => {

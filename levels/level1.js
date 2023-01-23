@@ -40,6 +40,9 @@ const level1 = new Level(
 
 pushObjects();
 
+/**
+ * pushing backgound objects into level1 object
+ */
 function pushObjects() {
 
     for(let i = 0; i < 6; i += 2) {

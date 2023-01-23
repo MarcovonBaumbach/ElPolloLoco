@@ -1,3 +1,6 @@
+/**
+ * class for properties of the starting screen
+ */
 class StartScreen extends DrawableObject {
     startScreenActive = true;
     width = 720;

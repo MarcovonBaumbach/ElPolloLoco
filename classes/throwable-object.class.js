@@ -1,3 +1,6 @@
+/**
+ * class for objects that can be thrown
+ */
 class ThrowableObject extends MovableObject {
     IMAGES = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -28,12 +31,18 @@ class ThrowableObject extends MovableObject {
         this.throw();
     }
 
+    /**
+     * character is throwing a bottle
+     */
     throw() {
         this.speedY = 25;
         this.applyGravity();
         this.throwingAnimation();
     }
 
+    /**
+     * animation when bottle is flying or splashing by impact
+     */
     throwingAnimation() {
         setInterval(() => {
             if (this.y < 350 && this.bottleRotation) {

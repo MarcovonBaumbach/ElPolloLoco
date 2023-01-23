@@ -1,3 +1,6 @@
+/**
+ * class for the status bar of character health
+ */
 class StatusBar extends DrawableObject {
     IMAGES = [
         'img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png',
@@ -19,12 +22,21 @@ class StatusBar extends DrawableObject {
         this.setPercentage(100);
     }
 
+    /**
+     * current status bar display, depending on the life left to the character
+     * @param {variable} percentage 
+     */
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
+    /**
+     * converting the percentage of lifespan into a proportional number of the images available to display the lifespan left,
+     * to use the number as index for the position in the IMAGES array
+     * @returns {number}
+     */
     resolveImageIndex() {
         if(this.percentage == 100) {
             return 5;

@@ -1,3 +1,6 @@
+/**
+ * Shows the endscreen
+ */
 class EndScreen extends MovableObject {
     IMAGE_END = 'img/9_intro_outro_screens/game_over/game over.png';
     IMAGE_LOST = 'img/9_intro_outro_screens/game_over/you lost.png';
@@ -16,6 +19,9 @@ class EndScreen extends MovableObject {
         this.checkGameOver();
     }
 
+    /**
+     * Checking if game is over, when character or endboss died
+     */
     checkGameOver() {
         setInterval(() => {
             if (this.world.character.isDead()) {
@@ -27,6 +33,9 @@ class EndScreen extends MovableObject {
         }, 200);
     }
 
+    /**
+     * Play animation when game is won
+     */
     gameWon() {
         this.world.character.hurtSound = '';
         
@@ -42,6 +51,9 @@ class EndScreen extends MovableObject {
         }, 1000);
     }
 
+    /**
+     * Play animation when game is lost
+     */
     gameLost() {
         this.world.character.hurtSound = '';
 

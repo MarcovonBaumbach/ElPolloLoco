@@ -87,7 +87,7 @@ class World {
 
     /**
      * Add an object to the canvas
-     * @param {variable} object 
+     * @param {object} object 
      */
     addToMap(object) {
         if(object.img) {
@@ -98,6 +98,9 @@ class World {
         }
     }
 
+    /**
+     * running all checks and requests at given interval
+     */
     run() {
         setInterval(() => {
             if (this.character.x > (this.endboss.x - 80)) {
@@ -115,6 +118,9 @@ class World {
         }, 200);
     }
 
+    /**
+     * checking if game is over
+     */
     checkGameOver() {
         if(this.endScreen.deleteEnemies) {
             this.enemies = [];
@@ -125,6 +131,9 @@ class World {
         }
     }
 
+    /**
+     * removing start screen and starting the game
+     */
     startGame() {
         this.startScreen.startScreenActive = false;
         this.enemies.forEach((enemy => {
@@ -133,12 +142,18 @@ class World {
         this.gameMusic.play();
     }
 
+    /**
+     * starting the game, after player has hit ENTER
+     */
     checkEnterPressed() {
         if (this.keyboard.ENTER) {
             this.startGame();
         }
     }
 
+    /**
+     * checking if character has thrown a bottle
+     */
     checkThrowObjects() {
         if (this.keyboard.SPACE && this.bottleBar.amount > 0) {
             let bottle = new ThrowableObject(this.character.x + 75, this.character.y + 120);
@@ -148,6 +163,9 @@ class World {
         }
     }
 
+    /**
+     * checking for collisions between objects
+     */
     checkCollisions() {
         this.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isAboveGround() && !enemy.dead) {
@@ -164,6 +182,9 @@ class World {
         this.characterCollidingWithEndboss();
     }
 
+    /**
+     * checking if the endboss got killed
+     */
     checkChickenKilled() {
         this.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
@@ -172,6 +193,9 @@ class World {
         });
     }
 
+    /**
+     * checking if character is colliding with endboss
+     */
     characterCollidingWithEndboss() {
         if (this.character.isColliding(this.endboss) && !this.endboss.isDead()) {
             this.character.hit();
@@ -179,6 +203,11 @@ class World {
         }
     }
 
+    /**
+     * when character collects object remove it from canvas and add amount to equivalent status bar
+     * @param {object} object 
+     * @param {object} bar 
+     */
     collectObject(object, bar) {
         for (let i = 0; i < object.length; i++) {
             if (this.character.isColliding(object[i]) && bar.amount < 5) {
