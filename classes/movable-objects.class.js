@@ -124,6 +124,16 @@ class MovableObject extends DrawableObject {
     }
 
     /**
+    * checking if objects are colliding with Character
+    * @param {object} obj 
+    * @returns {boolean}
+    */
+    isCollidingChicken(obj) {
+        return (this.x + this.width - 20) >= obj.x && (this.x + 20) <= (obj.x + obj.width) &&
+            (this.y + this.height - 10) >= obj.y && (this.y + 20) <= (obj.y + obj.height);
+    }
+
+    /**
      * checking if objects are colliding with Endboss
      * @param {object} obj 
      * @returns {boolean}

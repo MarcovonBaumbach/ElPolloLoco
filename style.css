@@ -1,19 +1,29 @@
+@font-face {
+    font-family: 'zabars';
+    src: url('./fonts/zabars.ttf')  format('truetype');
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
-    background-color: #efa751;
+    background-image: url('./img/5_background/background.png');
     background-size: cover;
+    background-repeat: no-repeat;
     font-family: fantasy;
+    height: 100vh;
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 70px;
+    font-family: 'zabars', fantasy;
+    letter-spacing: 3px;
 }
 
-.canvas {
+canvas {
     background-color: black;
+    display: block;
     cursor: pointer;
 }
 
@@ -29,9 +39,30 @@ h1 {
     margin-top: 30px;
 }
 
+.container {
+    position: relative;
+    width: 720px;
+}
+
+#mute {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
 .description {
     margin-bottom: 30px;
     width: 720px;
+}
+
+.overlay {
+    display: none;
+    width: 680px;
+    padding: 20px;
+    background-color: #994409;
 }
 
 span {
@@ -41,4 +72,61 @@ span {
 .space {
     height: 52px;
     width: auto;
+}
+
+#up, #left {
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 950px) {
+    .container, .description {
+        width: 70%;
+    }  
+    
+    #mute {
+        position: absolute;
+        top: unset;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    canvas {
+        width: 100%;
+    }
+
+    .overlay {
+        display: flex;
+        justify-content: space-between;
+        width: calc(70% - 40px);
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    h1, .description, .commands {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-height: 568px) {
+    #mute {
+        position: absolute;
+        top: unset;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    body {
+        background: black;
+    }
+    canvas {
+        height: calc(100vh - 88px);
+    } 
+    .overlay {
+        display: flex;
+        justify-content: space-between;
+    }  
+    h1, .description, .commands {
+        display: none;
+    }
 }

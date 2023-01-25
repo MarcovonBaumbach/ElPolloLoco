@@ -23,6 +23,7 @@ class World {
     startScreen = new StartScreen();
     endScreen = new EndScreen();
     gameMusic = new Audio('./audio/music.mp3');
+    musicPlays = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); //allows you to "draw" objects on the canvas
@@ -118,6 +119,16 @@ class World {
         }, 200);
     }
 
+    muteMusic() {
+        if(this.musicPlays){
+            this.gameMusic.pause();
+            this.musicPlays = false;
+        } else {
+            this.gameMusic.play();
+            this.musicPlays = true;
+        }
+    }
+
     /**
      * checking if game is over
      */
@@ -139,7 +150,10 @@ class World {
         this.enemies.forEach((enemy => {
             enemy.speed = 0.5 + Math.random();
         }))
-        this.gameMusic.play();
+        if(!this.musicPlays) {
+            this.gameMusic.play();
+            this.musicPlays = true;
+        }
     }
 
     /**
@@ -190,6 +204,12 @@ class World {
             if (this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
                 enemy.dead = true;
             }
+            this.throwableObjects.forEach((throwableObject) => {
+                if (enemy.isCollidingChicken(throwableObject)) {
+                    enemy.dead = true;
+                    throwableObject.bottleRotation = false;
+                }
+            });
         });
     }
 

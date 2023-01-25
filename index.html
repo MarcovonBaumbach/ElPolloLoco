@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./img/3_enemies_chicken/chicken_small/1_walk/1_w.png" />
     <title>El Pollo Loco</title>
     <script src="./classes/drawable-object.class.js"></script>
     <script src="./classes/movable-objects.class.js"></script>
@@ -33,8 +34,20 @@
     <span class="description">Jump on little chicken to eliminate them! <br> Collect bottles and coins! <br>
         Throw bottles on endboss until he's dead to win, but be careful he comes after you!
     </span>
-
-    <canvas onmousedown="world.startGame()" class="canvas" id="canvas" width="720" height="480"></canvas>
+    <div class="container">
+        <canvas onmousedown="world.startGame()" class="canvas" id="canvas" width="720" height="480"></canvas>
+        <img id="mute" onmousedown="world.muteMusic()" src="./img/10_keys/mute.png">
+    </div>
+    <div class="overlay">
+        <div class="buttons">
+            <img id="left" src="./img/10_keys/left_mobile.png">
+            <img id="right" src="./img/10_keys/right_mobile.png">
+        </div>
+        <div class="buttons">
+            <img id="up" src="./img/10_keys/up_mobile.png">
+            <img id="throw" src="./img/10_keys/throw_mobile.png">
+        </div>
+    </div>
 
     <div class="commands">
         <div class="command-row">

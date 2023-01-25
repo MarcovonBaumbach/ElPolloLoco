@@ -8,7 +8,53 @@ let keyboard = new Keyboard();
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+    pressDownMobile();
 }
+
+
+function pressDownMobile() {
+    document.getElementById('left').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
+            keyboard.LEFT = true;
+        }
+    });
+    document.getElementById('left').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.LEFT = false;
+    });
+    document.getElementById('right').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
+            keyboard.RIGHT = true;
+        }
+    });
+    document.getElementById('right').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = false;
+    });
+    document.getElementById('up').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
+            keyboard.UP = true;
+        }
+    });
+    document.getElementById('up').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.UP = false;
+    });
+    document.getElementById('throw').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
+            keyboard.SPACE = true;
+        }
+    });
+    document.getElementById('throw').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.SPACE = false;
+    });
+}
+
 
 window.addEventListener('keydown', (event) => {
     if (event.code == 'ArrowLeft' && !world.character.isDead() && !world.endboss.isDead() && !world.startScreen.startScreenActive) {
