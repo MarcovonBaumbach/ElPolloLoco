@@ -113,7 +113,9 @@ class Character extends MovableObject {
   moveRight() {
     super.moveRight();
     this.otherDirection = false;
-    this.walkingSound.play();
+    if(!this.isAboveGround()){
+      this.walkingSound.play();
+    }
   }
 
   /**
@@ -122,7 +124,9 @@ class Character extends MovableObject {
   moveLeft() {
     super.moveLeft();
     this.otherDirection = true;
-    this.walkingSound.play();
+    if(!this.isAboveGround()){
+      this.walkingSound.play();
+    }
   }
 
   /**

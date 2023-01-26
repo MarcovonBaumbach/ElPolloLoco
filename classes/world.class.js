@@ -123,9 +123,13 @@ class World {
         if(this.musicPlays){
             this.gameMusic.pause();
             this.musicPlays = false;
+            document.getElementById('mute').classList.remove('d-none');
+            document.getElementById('loud').classList.add('d-none');
         } else {
             this.gameMusic.play();
             this.musicPlays = true;
+            document.getElementById('mute').classList.add('d-none');
+            document.getElementById('loud').classList.remove('d-none');
         }
     }
 
@@ -153,6 +157,8 @@ class World {
         if(!this.musicPlays) {
             this.gameMusic.play();
             this.musicPlays = true;
+            document.getElementById('mute').classList.add('d-none');
+            document.getElementById('loud').classList.remove('d-none');
         }
     }
 

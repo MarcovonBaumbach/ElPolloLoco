@@ -16,9 +16,12 @@ body {
 }
 
 h1 {
-    font-size: 70px;
+    font-size: 60px;
     font-family: 'zabars', fantasy;
     letter-spacing: 3px;
+    margin: unset;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 canvas {
@@ -36,7 +39,7 @@ canvas {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .container {
@@ -44,7 +47,11 @@ canvas {
     width: 720px;
 }
 
-#mute {
+.d-none {
+    display: none;
+}
+
+#mute, #loud {
     position: absolute;
     top: 30px;
     right: 20px;
@@ -54,15 +61,19 @@ canvas {
 }
 
 .description {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     width: 720px;
 }
 
 .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: none;
     width: 680px;
-    padding: 20px;
-    background-color: #994409;
+    padding: 10px;
+    /* background-color: #994409; */
 }
 
 span {
@@ -80,14 +91,16 @@ span {
 
 @media only screen and (max-width: 950px) {
     .container, .description {
-        width: 70%;
+        width: 100%;
     }  
     
-    #mute {
+    #mute, #loud {
         position: absolute;
         top: unset;
         bottom: 20px;
-        right: 20px;
+        right: 50%;
+        transform: translate(50%, 0);
+        z-index: 3;
     }
 
     canvas {
@@ -97,7 +110,7 @@ span {
     .overlay {
         display: flex;
         justify-content: space-between;
-        width: calc(70% - 40px);
+        width: calc(100% - 20px);
     }
 }
 
@@ -109,18 +122,20 @@ span {
 
 
 @media only screen and (max-height: 568px) {
-    #mute {
+    #mute, #loud {
         position: absolute;
         top: unset;
         bottom: 20px;
-        right: 20px;
+        right: 50%;
+        transform: translate(50%, 0);
+        z-index: 3;
     }
 
     body {
         background: black;
     }
     canvas {
-        height: calc(100vh - 88px);
+        height: 100vh;
     } 
     .overlay {
         display: flex;
